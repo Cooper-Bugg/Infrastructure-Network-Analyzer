@@ -1,0 +1,32 @@
+id	studentsFirstName	studentsLastName	college	department	email	friendCount					
+1969527638	Seth	River Vickery	"College of Engineering, Architecture and Technology"	Electrical and Computer Engineering	srvickery@okstate.edu	1	3157134163				
+51878493	Tiera	Alena Goode	Spears School of Business	Department of Finance	tagoode@okstate.edu	2	3167964531	451819350			
+1393409100	Ronaldo	Barrett Bowser	Spears School of Business	School of Entrepreneurship	rbbowser@okstate.edu	2	1852404296	451819350			
+232891415	Neha	Jamia Maldonado	The College of Arts and Sciences	Computer Science	njmaldonado@okstate.edu	1	3649469655				
+3649469655	Madalynn	Julia Mulligan	The College of Arts and Sciences	Physics	mjmulligan@okstate.edu	2	232891415	518053777			
+99769502	Shayne	Pemberton	The College of Arts and Sciences	Chemistry	spemberton@okstate.edu	2	518053777	634516322			
+413415713	Dwayne	Llamas	"College of Engineering, Architecture and Technology"	Fire and Emergency Management	dllamas@okstate.edu	2	177694573	1238939516			
+518053777	Annette	Cinthia Brien	The College of Arts and Sciences	Chemistry	acbrien@okstate.edu	3	3649469655	99769502	634516322		
+3167964531	Kailee	Keira Noble	Spears School of Business	School of Accounting	kknoble@okstate.edu	3	51878493	1852404296	451819350		
+634516322	Conner	Mitchell Felix	The College of Arts and Sciences	Microbiology and Molecular Genetics	cmfelix@okstate.edu	3	518053777	99769502	465857810		
+3157134163	Blake	Nyasia Lloyd	"College of Engineering, Architecture and Technology"	Petroleum Engineeering	bnlloyd@okstate.edu	5	1969527638	299828914	1687385503	3355871489	320733081
+1852404296	Noah	Everett	Spears School of Business	School of Marketing and International Business	neverett@okstate.edu	2	3167964531	1393409100			
+320733081	Gordon	McClanahan	The College of Arts and Sciences	Geography	gmcclanahan@okstate.edu	3	611525786	2728660403	3157134163		
+611525786	Maxwell	Kyree Woodall	The College of Arts and Sciences	Statistics	mkwoodall@okstate.edu	3	320733081	1282070173	2728660403		
+451819350	Amaiya	Gwendolyn Hurt	Spears School of Business	School of Hopitality and Tourism Management	aghurt@okstate.edu	5	3167964531	1393409100	4781323279	1969604874	51878493
+465857810	Johnson	Beverly	Spears School of Business	Department of Management Science and Information Systems	jbeverly@okstate.edu	3	1969604874	353480695	634516322		
+1969604874	Helena	Easton	Spears School of Business	School of Hopitality and Tourism Management	heaston@okstate.edu	3	465857810	451819350	4781323279		
+1238939516	Jaylene	Slattery	"College of Engineering, Architecture and Technology"	Construction Engineering Technology	jslattery@okstate.edu	2	177694573	413415713			
+177694573	Dashawn	Kevon Workman	"College of Engineering, Architecture and Technology"	Architectural Engineering	dkworkman@okstate.edu	3	413415713	1238939516	1001608224		
+4781323279	Coy	Zain Kasper	Spears School of Business	Department of Management	czkasper@okstate.edu	3	451819350	1969604874	353480695		
+299828914	Lizbeth	Akers	"College of Engineering, Architecture and Technology"	Biosystems Engineering	lakers@okstate.edu	2	3157134163	1687385503			
+2728660403	Korbin	Ford	The College of Arts and Sciences	Mathematics	kford@okstate.edu	3	320733081	4890830966	611525786		
+353480695	George	Black	Spears School of Business	School of Marketing and International Business	gblack@okstate.edu	3	465857810	69611563	4781323279		
+1687385503	Brianne	Cornwell	"College of Engineering, Architecture and Technology"	Architecture	bcornwell@okstate.edu	3	3157134163	299828914	3355871489		
+2422549237	Lyric	Falcon	"College of Engineering, Architecture and Technology"	Mechanical Engineering	lfalcon@okstate.edu	2	3355871489	3336015731			
+1282070173	Jude	Francisco	The College of Arts and Sciences	Integrative Biology	jfrancisco@okstate.edu	1	611525786				
+69611563	Alecia	Ordonez	Spears School of Business	Department of Management Science and Information Systems	aordonez@okstate.edu	1	353480695				
+4890830966	Sequoia	Cone	The College of Arts and Sciences	Mathematics	scone@okstate.edu	2	2728660403	3336015731			
+3336015731	Saira	Stephens	"College of Engineering, Architecture and Technology"	Architecture	sstephens@okstate.edu	3	2422549237	4890830966	3355871489		
+3355871489	Dorien	Longoria	"College of Engineering, Architecture and Technology"	Fire Protection and Safety Engineering Technology	dlongoria@okstate.edu	4	3157134163	1687385503	2422549237	3336015731	
+1001608224	Susanna	Kauffman	The College of Arts and Sciences	Physics	skauffman@okstate.edu	1	177694573				
