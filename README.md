@@ -3,7 +3,7 @@
 A console application that builds an undirected, unweighted social network graph from a tab-separated input file and provides analytics like friend counts, friend circles by college, closeness centrality, and connector students.
 
 ## Files
-- [StudentNetworkAnalyzer.java](StudentNetworkAnalyzer.java): Main program and graph implementation.
+- [StudentNetworkAnalyzer.java](StudentNetworkAnalyzer.java): Main program and graph implementation (class Network_Analyzer).
 - [input.txt](input.txt): Example input data file (TSV).
 
 ## Requirements
@@ -20,7 +20,7 @@ javac StudentNetworkAnalyzer.java
 - Run:
 
 ```bash
-java StudentNetworkAnalyzer
+java Network_Analyzer
 ```
 
 When prompted, enter the path to your TSV input file (for example, `input.txt`).

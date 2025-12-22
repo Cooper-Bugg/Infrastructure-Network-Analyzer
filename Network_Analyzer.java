@@ -3,18 +3,18 @@ Author Name: Cooper Huntington-Bugg
 Email: cohunti@okstate.edu
 Date: 11/23/2025
 Program Description:
-This program builds an undirected unweighted social network graph for OSU students
+This program builds an undirected unweighted network graph for infrastructure nodes
 from an input file. The graph is stored as an adjacency list. The user can remove
-friendships, delete accounts, count friends, list friend circles for a college,
-compute closeness centrality for a student and find connector students in the
+connections, delete nodes, count connections, list connection groups for a unit,
+compute closeness centrality for a node and find connector nodes in the
 network. All interaction is done through a menu on the console.
 */
 
 import java.io.*;
 import java.util.*;
 
-// Main driver class for Assignment 05
-public class StudentNetworkAnalyzer {
+// Main driver class
+public class Network_Analyzer {
 
     // Entry point of the program
     // args - command line arguments (not used)
@@ -53,16 +53,16 @@ public class StudentNetworkAnalyzer {
 
                 switch (choice) {
                     case 1:
-                        handleRemoveFriendship(console, graph);
+                        handleRemoveConnection(console, graph);
                         break;
                     case 2:
-                        handleDeleteAccount(console, graph);
+                        handleDeleteNode(console, graph);
                         break;
                     case 3:
-                        handleCountFriends(console, graph);
+                        handleCountConnections(console, graph);
                         break;
                     case 4:
-                        handleFriendsCircle(console, graph);
+                        handleConnectionGroups(console, graph);
                         break;
                     case 5:
                         handleClosenessCentrality(console, graph);
@@ -85,26 +85,24 @@ public class StudentNetworkAnalyzer {
     // Prints the main menu for the user
     private static void printMenu() {
         System.out.println();
-        System.out.println("1. Remove friendship");
-        System.out.println("2. Delete Account");
-        System.out.println("3. Count friends");
-        System.out.println("4. Friends Circle");
+        System.out.println("1. Remove connection");
+        System.out.println("2. Delete Node");
+        System.out.println("3. Count connections");
+        System.out.println("4. Connection Groups");
         System.out.println("5. Closeness centrality");
         System.out.println("6. Find Connectors");
         System.out.println("7. Exit");
     }
 
-    // Handles option 1: removing a friendship between two students
-    // in - scanner used for user input
-    // graph - current social graph
-    private static void handleRemoveFriendship(Scanner in, Graph graph) {
-        System.out.print("Enter first student's first name: ");
+    // Handles option 1: removing a connection between two nodes
+    private static void handleRemoveConnection(Scanner in, Graph graph) {
+        System.out.print("Enter first node's name: ");
         String name1 = in.nextLine().trim();
-        System.out.print("Enter second student's first name: ");
+        System.out.print("Enter second node's name: ");
         String name2 = in.nextLine().trim();
 
-        Vertex v1 = graph.findByFirstName(name1);
-        Vertex v2 = graph.findByFirstName(name2);
+        Vertex v1 = graph.findByNodeName(name1);
+        Vertex v2 = graph.findByNodeName(name2);
 
         boolean missing = false;
 
@@ -126,28 +124,26 @@ public class StudentNetworkAnalyzer {
 
         assert v1 != null && v2 != null; // Already checked above
 
-        boolean removed = graph.removeFriendship(v1, v2);
+        boolean removed = graph.removeConnection(v1, v2);
 
         if (removed) {
-            System.out.println("The edge between the students " 
-                    + v1.student.firstName + " and " + v2.student.firstName
-                    + " has been successfully removed..");
-            System.out.println("Total number of students in the graph: " + graph.getVertexCount());
+            System.out.println("The edge between the nodes " 
+                + v1.node.nodeName + " and " + v2.node.nodeName
+                + " has been successfully removed..");
+            System.out.println("Total number of nodes in the graph: " + graph.getVertexCount());
             System.out.println("Total number of edges in the graph: " + graph.getEdgeCount());
         } else {
             System.out.println("Sorry.. There is no edge between the vertices "
-                    + v1.student.firstName + " and " + v2.student.firstName + ".");
+                + v1.node.nodeName + " and " + v2.node.nodeName + ".");
         }
     }
 
-    // Handles option 2: deleting a student account from the graph
-    // in - scanner used for user input
-    // graph - current social graph
-    private static void handleDeleteAccount(Scanner in, Graph graph) {
-        System.out.print("Enter student's first name to delete: ");
+    // Handles option 2: deleting a node from the graph
+    private static void handleDeleteNode(Scanner in, Graph graph) {
+        System.out.print("Enter node's name to delete: ");
         String name = in.nextLine().trim();
 
-        Vertex v = graph.findByFirstName(name);
+        Vertex v = graph.findByNodeName(name);
 
         if (v == null) {
             System.out.println("Sorry.. ");
@@ -157,19 +153,17 @@ public class StudentNetworkAnalyzer {
 
         graph.deleteVertex(v);
 
-        System.out.println("The student " + name + " has been successfully removed..");
+        System.out.println("The node " + name + " has been successfully removed..");
         System.out.println("Total number of vertices in the graph: " + graph.getVertexCount());
         System.out.println("Total number of edges in the graph: " + graph.getEdgeCount());
     }
 
-    // Handles option 3: counting friends for a student and listing them
-    // in - scanner used for user input
-    // graph - current social graph
-    private static void handleCountFriends(Scanner in, Graph graph) {
-        System.out.print("Enter student's first name: ");
+    // Handles option 3: counting connections for a node and listing them
+    private static void handleCountConnections(Scanner in, Graph graph) {
+        System.out.print("Enter node's name: ");
         String name = in.nextLine().trim();
 
-        Vertex v = graph.findByFirstName(name);
+        Vertex v = graph.findByNodeName(name);
 
         if (v == null) {
             System.out.println("Sorry.. ");
@@ -179,38 +173,36 @@ public class StudentNetworkAnalyzer {
 
         int count = v.neighbors.size();
 
-        System.out.println("Friend count for " + v.student.firstName + ": " + count);
-        System.out.println("Friends of " + v.student.firstName + " are:");
+        System.out.println("Connection count for " + v.node.nodeName + ": " + count);
+        System.out.println("Connections of " + v.node.nodeName + " are:");
 
-        for (Vertex friend : v.neighbors) {
-            System.out.println(friend.student.firstName);
+        for (Vertex conn : v.neighbors) {
+            System.out.println(conn.node.nodeName);
         }
     }
 
-    // Handles option 4: listing friend circles for a given college
-    // in - scanner used for user input
-    // graph - current social graph
-    private static void handleFriendsCircle(Scanner in, Graph graph) {
-        System.out.print("Enter college name: ");
-        String college = in.nextLine().trim();
+    // Handles option 4: listing connection groups for a given unit
+    private static void handleConnectionGroups(Scanner in, Graph graph) {
+        System.out.print("Enter unit name: ");
+        String unit = in.nextLine().trim();
 
-        List<List<Vertex>> friendCircles = graph.getFriendCirclesForCollege(college);
+        List<List<Vertex>> connectionGroups = graph.getConnectionGroupsForUnit(unit);
 
-        System.out.println("Following are the friend circles in the " + college + ":");
+        System.out.println("Following are the connection groups in the unit " + unit + ":");
 
-        if (friendCircles.isEmpty()) {
-            // It is possible that there are no students from that college.
+        if (connectionGroups.isEmpty()) {
+            // It is possible that there are no nodes from that unit.
             return;
         }
 
-        for (List<Vertex> circle : friendCircles) {
-            if (circle.size() == 1) {
-                System.out.println(circle.get(0).student.firstName);
+        for (List<Vertex> group : connectionGroups) {
+            if (group.size() == 1) {
+                System.out.println(group.get(0).node.nodeName);
             } else {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < circle.size(); i++) {
-                    sb.append(circle.get(i).student.firstName);
-                    if (i != circle.size() - 1) {
+                for (int i = 0; i < group.size(); i++) {
+                    sb.append(group.get(i).node.nodeName);
+                    if (i != group.size() - 1) {
                         sb.append(" - ");
                     }
                 }
@@ -223,10 +215,10 @@ public class StudentNetworkAnalyzer {
     // in - scanner used for user input
     // graph - current social graph
     private static void handleClosenessCentrality(Scanner in, Graph graph) {
-        System.out.print("Enter student's first name: ");
+        System.out.print("Enter node's name: ");
         String name = in.nextLine().trim();
 
-        Vertex v = graph.findByFirstName(name);
+        Vertex v = graph.findByNodeName(name);
 
         if (v == null) {
             System.out.println("Sorry.. ");
@@ -241,9 +233,9 @@ public class StudentNetworkAnalyzer {
         }
 
         System.out.printf("The Closeness Centrality for %s: %.2f%n",
-                v.student.firstName, closeness);
+            v.node.nodeName, closeness);
         System.out.printf("The Normalized Closeness Centrality for %s: %.2f%n",
-                v.student.firstName, normalized);
+            v.node.nodeName, normalized);
     }
 
     // Handles option 6 (bonus): finding connector vertices in the graph
@@ -258,68 +250,55 @@ public class StudentNetworkAnalyzer {
 
         System.out.println("The connectors in the graph are as follows:");
         for (Vertex v : connectors) {
-            System.out.println(v.student.firstName + " from " + v.student.college);
+            System.out.println(v.node.nodeName + " from " + v.node.unit);
         }
     }
 }
 
-// Simple data class that stores student information
-class Student {
+// Simple data class that stores node information
+class Node {
     long id;
-    String firstName;
-    String lastName;      // Not directly used but part of complete student record
-    String college;
-    String department;    // Not directly used but part of complete student record
-    String email;         // Not directly used but part of complete student record
+    String nodeName;
+    String group;
+    String unit;
+    String contact;
 
-    // Builds a student object with all fields
-    // id - unique student id
-    // firstName - first name
-    // lastName - last name
-    // college - college name
-    // department - department name
-    // email - email address
-    public Student(long id, String firstName, String lastName,
-                   String college, String department, String email) {
+    // Builds a node object with all fields
+    public Node(long id, String nodeName, String group, String unit, String contact) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.college = college;
-        this.department = department;
-        this.email = email;
+        this.nodeName = nodeName;
+        this.group = group;
+        this.unit = unit;
+        this.contact = contact;
     }
 }
 
-// Vertex class for the graph. Wraps a student and its adjacency list
+// Vertex class for the graph. Wraps a node and its adjacency list
 class Vertex {
-    Student student;
+    Node node;
     List<Vertex> neighbors;
 
     // Fields used for connector computation
     int dfsNum;
     int low;
 
-    // Builds a vertex for a given student
-    // student - student stored at this vertex
-    public Vertex(Student student) {
-        this.student = student;
+    // Builds a vertex for a given node
+    public Vertex(Node node) {
+        this.node = node;
         this.neighbors = new ArrayList<>();
         this.dfsNum = 0;
         this.low = 0;
     }
 }
 
-// Helper class that stores pending friendship ids while building the graph
-class PendingFriendships {
+// Helper class that stores pending connection ids while building the graph
+class PendingConnections {
     long ownerId;
-    List<Long> friendIds;
+    List<Long> connectionIds;
 
-    // Creates a record for friends of a vertex that are not connected yet
-    // ownerId - id of the student
-    // friendIds - list of ids of friends
-    public PendingFriendships(long ownerId, List<Long> friendIds) {
+    public PendingConnections(long ownerId, List<Long> connectionIds) {
         this.ownerId = ownerId;
-        this.friendIds = friendIds;
+        this.connectionIds = connectionIds;
     }
 }
 
@@ -336,112 +315,82 @@ class Graph {
     }
 
     // Reads the graph from the given input file and returns a new Graph
-    // filename - name of the input file
-    // returns graph built from the file
-    // throws IOException when the file cannot be read
     public static Graph fromFile(String filename) throws IOException {
         Graph graph = new Graph();
-
-        List<PendingFriendships> pending = new ArrayList<>();
-
+        List<PendingConnections> pending = new ArrayList<>();
         File file = new File(filename);
         try (Scanner fileScanner = new Scanner(file)) {
             if (!fileScanner.hasNextLine()) {
                 return graph;
             }
-
             // Skip header line
             fileScanner.nextLine();
-
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
                 if (line.trim().isEmpty()) {
                     continue;
                 }
-
                 String[] tokens = line.split("\t");
-
-                if (tokens.length < 7) {
+                if (tokens.length < 6) {
                     continue;
                 }
-
                 long id = Long.parseLong(tokens[0].trim());
-                String firstName = tokens[1].trim();
-                String lastName = tokens[2].trim();
-                String college = tokens[3].trim();
-                String department = tokens[4].trim();
-                String email = tokens[5].trim();
-                int friendCount = Integer.parseInt(tokens[6].trim());
-
-                // Remove outer quotes from college if they exist
-                if (college.length() > 1 && college.charAt(0) == '"'
-                        && college.charAt(college.length() - 1) == '"') {
-                    college = college.substring(1, college.length() - 1);
-                }
-
-                Student s = new Student(id, firstName, lastName, college, department, email);
-                graph.addVertex(s);
-
-                List<Long> friends = new ArrayList<>();
-                for (int i = 0; i < friendCount; i++) {
-                    int idx = 7 + i;
+                String nodeName = tokens[1].trim();
+                String group = tokens[2].trim();
+                String unit = tokens[3].trim();
+                String contact = tokens[4].trim();
+                int connectionCount = Integer.parseInt(tokens[5].trim());
+                Node n = new Node(id, nodeName, group, unit, contact);
+                graph.addVertex(n);
+                List<Long> connections = new ArrayList<>();
+                for (int i = 0; i < connectionCount; i++) {
+                    int idx = 6 + i;
                     if (idx < tokens.length) {
-                        String f = tokens[idx].trim();
-                        if (!f.isEmpty()) {
-                            long friendId = Long.parseLong(f);
-                            friends.add(friendId);
+                        String c = tokens[idx].trim();
+                        if (!c.isEmpty()) {
+                            long connId = Long.parseLong(c);
+                            connections.add(connId);
                         }
                     }
                 }
-                pending.add(new PendingFriendships(id, friends));
+                pending.add(new PendingConnections(id, connections));
             }
         }
-
         // Second pass: add undirected edges
-        for (PendingFriendships pf : pending) {
-            for (Long friendId : pf.friendIds) {
-                // Only add each undirected edge once
-                long a = pf.ownerId;
-                long b = friendId;
+        for (PendingConnections pc : pending) {
+            for (Long connId : pc.connectionIds) {
+                long a = pc.ownerId;
+                long b = connId;
                 if (a == b) {
                     continue;
                 }
                 if (a < b) {
-                    graph.addFriendshipById(a, b);
+                    graph.addConnectionById(a, b);
                 }
             }
         }
-
         return graph;
     }
 
-    // Adds a vertex for the given student if it does not already exist
-    // student - student to add
-    public void addVertex(Student student) {
-        if (!vertices.containsKey(student.id)) {
-            vertices.put(student.id, new Vertex(student));
+    // Adds a vertex for the given node if it does not already exist
+    public void addVertex(Node node) {
+        if (!vertices.containsKey(node.id)) {
+            vertices.put(node.id, new Vertex(node));
         }
     }
 
-    // Adds an undirected friendship between two students given their ids
-    // If any id is missing, nothing is changed
-    // id1 - id of first student
-    // id2 - id of second student
-    public void addFriendshipById(long id1, long id2) {
+    // Adds an undirected connection between two nodes given their ids
+    public void addConnectionById(long id1, long id2) {
         Vertex v1 = vertices.get(id1);
         Vertex v2 = vertices.get(id2);
-
         if (v1 == null || v2 == null) {
             return;
         }
-
-        addFriendship(v1, v2);
+        addConnection(v1, v2);
     }
 
     // Adds an undirected edge between two vertices if it does not already exist
-    // v1 - first vertex
-    // v2 - second vertex
-    private void addFriendship(Vertex v1, Vertex v2) {
+    private void addConnection(Vertex v1, Vertex v2) {
         if (v1 == v2) {
             return;
         }
@@ -453,21 +402,15 @@ class Graph {
     }
 
     // Removes an undirected edge between two vertices when it exists
-    // v1 - first vertex
-    // v2 - second vertex
-    // returns true if an edge was removed, false otherwise
-    public boolean removeFriendship(Vertex v1, Vertex v2) {
+    public boolean removeConnection(Vertex v1, Vertex v2) {
         boolean removed1 = v1.neighbors.remove(v2);
         boolean removed2 = v2.neighbors.remove(v1);
-
         if (removed1 && removed2) {
             edgeCount--;
             return true;
         }
-        // If lists were not symmetric, repair them lightly
         if (removed1 ^ removed2) {
             if (removed1) {
-                // ensure no stale reference
                 v2.neighbors.remove(v1);
             } else {
                 v1.neighbors.remove(v2);
@@ -486,7 +429,7 @@ class Graph {
         }
         v.neighbors.clear();
 
-        vertices.remove(v.student.id);
+        vertices.remove(v.node.id);
     }
 
     // Returns the number of vertices in the graph
@@ -501,43 +444,31 @@ class Graph {
         return edgeCount;
     }
 
-    // Finds the vertex by first name, ignoring case
-    // firstName - first name of the student
-    // returns vertex when found, or null when not found
-    public Vertex findByFirstName(String firstName) {
+    // Finds the vertex by node name, ignoring case
+    public Vertex findByNodeName(String nodeName) {
         for (Vertex v : vertices.values()) {
-            if (v.student.firstName.equalsIgnoreCase(firstName)) {
+            if (v.node.nodeName.equalsIgnoreCase(nodeName)) {
                 return v;
             }
         }
         return null;
     }
 
-    // Computes friend circles for a given college using connected components
-    // Each friend circle is the set of vertices from that college that lie in
-    // the same connected component of the full graph
-    // collegeName - college name to filter on
-    // returns list of friend circles (each circle is a list of vertices)
-    public List<List<Vertex>> getFriendCirclesForCollege(String collegeName) {
-        List<List<Vertex>> circles = new ArrayList<>();
-
+    // Computes connection groups for a given unit using connected components
+    public List<List<Vertex>> getConnectionGroupsForUnit(String unitName) {
+        List<List<Vertex>> groups = new ArrayList<>();
         Set<Vertex> visited = new HashSet<>();
-
         for (Vertex start : vertices.values()) {
             if (visited.contains(start)) {
                 continue;
             }
-
             List<Vertex> component = new ArrayList<>();
             Queue<Vertex> queue = new LinkedList<>();
-
             visited.add(start);
             queue.add(start);
-
             while (!queue.isEmpty()) {
                 Vertex current = queue.poll();
                 component.add(current);
-
                 for (Vertex neighbor : current.neighbors) {
                     if (!visited.contains(neighbor)) {
                         visited.add(neighbor);
@@ -545,21 +476,18 @@ class Graph {
                     }
                 }
             }
-
-            // Filter this component to only students from the given college
-            List<Vertex> inCollege = new ArrayList<>();
+            // Filter this component to only nodes from the given unit
+            List<Vertex> inUnit = new ArrayList<>();
             for (Vertex v : component) {
-                if (v.student.college.equalsIgnoreCase(collegeName)) {
-                    inCollege.add(v);
+                if (v.node.unit.equalsIgnoreCase(unitName)) {
+                    inUnit.add(v);
                 }
             }
-
-            if (!inCollege.isEmpty()) {
-                circles.add(inCollege);
+            if (!inUnit.isEmpty()) {
+                groups.add(inUnit);
             }
         }
-
-        return circles;
+        return groups;
     }
 
     // Computes the closeness centrality for a given vertex using Dijkstra's algorithm
@@ -573,31 +501,30 @@ class Graph {
         }
 
         // Inner class for priority queue entries
-        class Node {
+        class PQNode {
             Vertex v;
             double d;
-            Node(Vertex v, double d) {
+            PQNode(Vertex v, double d) {
                 this.v = v;
                 this.d = d;
             }
         }
 
-        PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> Double.compare(a.d, b.d));
+        PriorityQueue<PQNode> pq = new PriorityQueue<>((a, b) -> Double.compare(a.d, b.d));
 
         dist.put(start, 0.0);
-        pq.add(new Node(start, 0.0));
+        pq.add(new PQNode(start, 0.0));
 
         while (!pq.isEmpty()) {
-            Node current = pq.poll();
+            PQNode current = pq.poll();
             if (current.d > dist.get(current.v)) {
                 continue;
             }
-
             for (Vertex neighbor : current.v.neighbors) {
                 double newDist = current.d + 1.0;
                 if (newDist < dist.get(neighbor)) {
                     dist.put(neighbor, newDist);
-                    pq.add(new Node(neighbor, newDist));
+                    pq.add(new PQNode(neighbor, newDist));
                 }
             }
         }
@@ -613,7 +540,6 @@ class Graph {
                 sum += 1.0 / d;
             }
         }
-
         return sum;
     }
 

@@ -1,32 +1,27 @@
-id	studentsFirstName	studentsLastName	college	department	email	friendCount					
-1969527638	Seth	River Vickery	"College of Engineering, Architecture and Technology"	Electrical and Computer Engineering	srvickery@okstate.edu	1	3157134163				
-51878493	Tiera	Alena Goode	Spears School of Business	Department of Finance	tagoode@okstate.edu	2	3167964531	451819350			
-1393409100	Ronaldo	Barrett Bowser	Spears School of Business	School of Entrepreneurship	rbbowser@okstate.edu	2	1852404296	451819350			
-232891415	Neha	Jamia Maldonado	The College of Arts and Sciences	Computer Science	njmaldonado@okstate.edu	1	3649469655				
-3649469655	Madalynn	Julia Mulligan	The College of Arts and Sciences	Physics	mjmulligan@okstate.edu	2	232891415	518053777			
-99769502	Shayne	Pemberton	The College of Arts and Sciences	Chemistry	spemberton@okstate.edu	2	518053777	634516322			
-413415713	Dwayne	Llamas	"College of Engineering, Architecture and Technology"	Fire and Emergency Management	dllamas@okstate.edu	2	177694573	1238939516			
-518053777	Annette	Cinthia Brien	The College of Arts and Sciences	Chemistry	acbrien@okstate.edu	3	3649469655	99769502	634516322		
-3167964531	Kailee	Keira Noble	Spears School of Business	School of Accounting	kknoble@okstate.edu	3	51878493	1852404296	451819350		
-634516322	Conner	Mitchell Felix	The College of Arts and Sciences	Microbiology and Molecular Genetics	cmfelix@okstate.edu	3	518053777	99769502	465857810		
-3157134163	Blake	Nyasia Lloyd	"College of Engineering, Architecture and Technology"	Petroleum Engineeering	bnlloyd@okstate.edu	5	1969527638	299828914	1687385503	3355871489	320733081
-1852404296	Noah	Everett	Spears School of Business	School of Marketing and International Business	neverett@okstate.edu	2	3167964531	1393409100			
-320733081	Gordon	McClanahan	The College of Arts and Sciences	Geography	gmcclanahan@okstate.edu	3	611525786	2728660403	3157134163		
-611525786	Maxwell	Kyree Woodall	The College of Arts and Sciences	Statistics	mkwoodall@okstate.edu	3	320733081	1282070173	2728660403		
-451819350	Amaiya	Gwendolyn Hurt	Spears School of Business	School of Hopitality and Tourism Management	aghurt@okstate.edu	5	3167964531	1393409100	4781323279	1969604874	51878493
-465857810	Johnson	Beverly	Spears School of Business	Department of Management Science and Information Systems	jbeverly@okstate.edu	3	1969604874	353480695	634516322		
-1969604874	Helena	Easton	Spears School of Business	School of Hopitality and Tourism Management	heaston@okstate.edu	3	465857810	451819350	4781323279		
-1238939516	Jaylene	Slattery	"College of Engineering, Architecture and Technology"	Construction Engineering Technology	jslattery@okstate.edu	2	177694573	413415713			
-177694573	Dashawn	Kevon Workman	"College of Engineering, Architecture and Technology"	Architectural Engineering	dkworkman@okstate.edu	3	413415713	1238939516	1001608224		
-4781323279	Coy	Zain Kasper	Spears School of Business	Department of Management	czkasper@okstate.edu	3	451819350	1969604874	353480695		
-299828914	Lizbeth	Akers	"College of Engineering, Architecture and Technology"	Biosystems Engineering	lakers@okstate.edu	2	3157134163	1687385503			
-2728660403	Korbin	Ford	The College of Arts and Sciences	Mathematics	kford@okstate.edu	3	320733081	4890830966	611525786		
-353480695	George	Black	Spears School of Business	School of Marketing and International Business	gblack@okstate.edu	3	465857810	69611563	4781323279		
-1687385503	Brianne	Cornwell	"College of Engineering, Architecture and Technology"	Architecture	bcornwell@okstate.edu	3	3157134163	299828914	3355871489		
-2422549237	Lyric	Falcon	"College of Engineering, Architecture and Technology"	Mechanical Engineering	lfalcon@okstate.edu	2	3355871489	3336015731			
-1282070173	Jude	Francisco	The College of Arts and Sciences	Integrative Biology	jfrancisco@okstate.edu	1	611525786				
-69611563	Alecia	Ordonez	Spears School of Business	Department of Management Science and Information Systems	aordonez@okstate.edu	1	353480695				
-4890830966	Sequoia	Cone	The College of Arts and Sciences	Mathematics	scone@okstate.edu	2	2728660403	3336015731			
-3336015731	Saira	Stephens	"College of Engineering, Architecture and Technology"	Architecture	sstephens@okstate.edu	3	2422549237	4890830966	3355871489		
-3355871489	Dorien	Longoria	"College of Engineering, Architecture and Technology"	Fire Protection and Safety Engineering Technology	dlongoria@okstate.edu	4	3157134163	1687385503	2422549237	3336015731	
-1001608224	Susanna	Kauffman	The College of Arts and Sciences	Physics	skauffman@okstate.edu	1	177694573				
+id	nodeName	group	unit	contact	connectionCount	connectionId1	connectionId2	connectionId3	connectionId4	connectionId5
+1001	Auth Service	Engineering	Backend	auth@internal	3	1002	1003	1005
+1002	User API	Engineering	Backend	userapi@internal	4	1001	1004	1006	1007
+1003	Payment Processor	Engineering	Payments	payments@internal	3	1001	1006	1008
+1004	Web Frontend	Engineering	UI	frontend@internal	3	1002	1007	1017
+1005	Event Bus	Engineering	Platform	events@internal	4	1001	1006	1010	1017
+1006	Data Gateway	Engineering	Platform	gateway@internal	5	1002	1003	1005	1010	1011
+1007	Notification Service	Engineering	Platform	notify@internal	3	1002	1004	1012
+1008	Billing UI	Engineering	UI	billingui@internal	2	1003	1012
+1009	Experiment Tracker	Research	ML Platform	experiments@internal	3	1010	1011	1013
+1010	Analytics Engine	Research	Data Science	analytics@internal	5	1005	1006	1009	1011	1017
+1011	Feature Store	Research	Data Science	featurestore@internal	4	1006	1009	1010	1014
+1012	Reporting Service	Research	Data Science	reports@internal	4	1007	1008	1014	1015
+1013	Model Registry	Research	ML Platform	models@internal	3	1009	1014	1016
+1014	Batch Pipeline	Research	Data Engineering	batch@internal	5	1011	1012	1013	1015	1021
+1015	Data Warehouse	Research	Data Engineering	warehouse@internal	4	1012	1014	1016	1021
+1016	A B Testing	Research	Product Science	abtest@internal	3	1013	1015	1019
+1017	API Gateway	Operations	Edge	gatewayedge@internal	5	1004	1005	1010	1018	1019
+1018	Load Balancer	Operations	Infrastructure	lb@internal	3	1017	1020	1022
+1019	Observability Stack	Operations	SRE	observability@internal	4	1016	1017	1020	1023
+1020	Incident Bot	Operations	SRE	incident@internal	4	1018	1019	1021	1024
+1021	Scheduler	Operations	Platform	scheduler@internal	4	1014	1015	1020	1025
+1022	Secrets Vault	Operations	Security	vault@internal	3	1018	1025	1026
+1023	Backup Service	Operations	Infrastructure	backup@internal	3	1019	1024	1026
+1024	Storage Cluster	Operations	Infrastructure	storage@internal	3	1020	1023	1026
+1025	CI Runner	Operations	Platform	ci@internal	2	1021	1022
+1026	Audit Log	Operations	Security	audit@internal	3	1022	1023	1024
