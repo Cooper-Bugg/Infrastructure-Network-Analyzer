@@ -1,9 +1,23 @@
-# Network Analyzer
+# Infrastructure Network Analyzer
 
-A console application that builds an undirected, unweighted social network graph from a tab-separated input file and provides analytics like friend counts, friend circles by college, closeness centrality, and connector students.
+A console application that builds an undirected, unweighted network graph from a tab-separated input file and provides analytics like connection counts, node groups by attribute, closeness centrality, and connector nodes.
+
+## Demo
+
+1. **Initial Load and Menu:**
+
+	![Initial Load and Menu](media/Initial.png)
+
+2. **Prompt 7: Visualize Graph Option:**
+
+	![Prompt 7: Visualize Graph Option](media/Prompt_7.png)
+
+3. **Interactive Network Visualization:**
+
+	![Interactive Network Visualization](media/graph-showcase.gif)
 
 ## Files
-- [StudentNetworkAnalyzer.java](StudentNetworkAnalyzer.java): Main program and graph implementation (class Network_Analyzer).
+- [Network_Analyzer.java](Network_Analyzer.java): Main program and graph implementation.
 - [input.txt](input.txt): Example input data file (TSV).
 
 ## Requirements
@@ -26,39 +40,41 @@ java Network_Analyzer
 When prompted, enter the path to your TSV input file (for example, `input.txt`).
 
 ## Input Format (TSV)
-- Header line followed by one line per student.
+- Header line followed by one line per node.
 - Columns:
 	1. `id` (long)
-	2. `firstName`
-	3. `lastName`
-	4. `college`
-	5. `department`
+	2. `name1`
+	3. `name2`
+	4. `group` (e.g., college)
+	5. `type` (e.g., department)
 	6. `email`
-	7. `friendCount` (int)
-	8. `friendId1` ... `friendIdN` (exactly `friendCount` ids)
-
-Example (tabs shown as `\t` for clarity):
+	7. `connectionCount` (int)
+	8. `connectionID1` ... `connectionIDN` (exactly `connectionCount` ids)
 
 ```
-id	first	last	college	department	email	friendCount	friendId1	friendId2
-1	Alice	Smith	"Engineering"	ECE	alice@osu.edu	2	2	3
-2	Bob	Jones	"Engineering"	ME	bob@osu.edu	1	1
-3	Carol	Lee	"Arts & Sciences"	Math	carol@osu.edu	1	1
+id	name1	name2	group	type	email	connectionCount	connectionID1	connectionId2
+1	Alpha	NodeA	"Engineering"	ECE	alpha@network.com	2	2	3
+2	Beta	NodeB	"Engineering"	ME	beta@network.com	1	1
+```
+
+```
+3	Gamma	NodeC	"Arts & Sciences"	Math	gamma@network.com	1	1
 ```
 
 Notes:
-- `college` values may be quoted in the input; quotes are handled.
-- Friendships are treated as undirected and added only once.
+ - Ensure `connectionCount` matches the number of following IDs on the line.
+- `group` values may be quoted in the input; quotes are handled.
+- Connections are treated as undirected and added only once.
 
 ## Features
-- Remove friendship: deletes an undirected edge between two students.
-- Delete account: removes a student and all incident friendships.
-- Count friends: shows count and lists direct neighbors.
-- Friends circle: lists connected groups filtered by `college`.
+- Remove connection: deletes an undirected edge between two nodes.
+- Delete node: removes a node and all incident connections.
+- Count connections: shows count and lists direct neighbors.
+- Node group: lists connected groups filtered by `group`.
 - Closeness centrality: computes and shows raw and normalized scores.
 - Find connectors: identifies articulation points in the graph.
 
 ## Usage Tips
-- Keep ids unique across the file.
-- Ensure `friendCount` matches the number of following friend ids on the line.
+- Keep node ids unique across the file.
+- Ensure `connectionCount` matches the number of following connection ids on the line.
 - Use the menu to perform operations after the file loads.

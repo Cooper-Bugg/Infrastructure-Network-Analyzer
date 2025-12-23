@@ -1,0 +1,33 @@
+# Java class files
+*.class
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Log files
+*.log
+
+# Media and screenshots
+screenshots/
+media/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Build output
+bin/
+out/
+
+# Miscellaneous
+*.swp
+*.swo
+*~
+.idea/
+*.iml
+
+# Ignore generated HTML visualization
+infrastructure_graph.html

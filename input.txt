@@ -1,4 +1,4 @@
-id	nodeName	group	unit	contact	connectionCount	connectionId1	connectionId2	connectionId3	connectionId4	connectionId5
+id	nodeName	group	unit	contact	connectionCount	connectionID1	connectionID2	connectionID3	connectionID4	connectionID5
 1001	Auth Service	Engineering	Backend	auth@internal	3	1002	1003	1005
 1002	User API	Engineering	Backend	userapi@internal	4	1001	1004	1006	1007
 1003	Payment Processor	Engineering	Payments	payments@internal	3	1001	1006	1008
@@ -25,3 +25,12 @@ id	nodeName	group	unit	contact	connectionCount	connectionId1	connectionId2	conne
 1024	Storage Cluster	Operations	Infrastructure	storage@internal	3	1020	1023	1026
 1025	CI Runner	Operations	Platform	ci@internal	2	1021	1022
 1026	Audit Log	Operations	Security	audit@internal	3	1022	1023	1024
+1027	Support Hub	Support	Customer	support@internal	3	1028	1030	1017
+1028	Ticket System	Support	Customer	tickets@internal	3	1027	1029	1030
+1029	Feedback Manager	Support	Customer	feedback@internal	2	1028	1030
+1030	CRM System	Support	Customer	crm@internal	4	1027	1028	1029	1031
+1031	Sales Intelligence	Support	Customer	salesintel@internal	3	1030	1032	1014
+1032	Marketing Tool	Support	Marketing	marketing@internal	2	1031	1030
+1033	Logging Agent	Support	Logging	logagent@internal	1	1014
+1034	Alert Manager	Support	Logging	alertmgr@internal	1	1033
+1035	Alarm Notifier	Support	Logging	alarm@internal	1	1034

@@ -52,31 +52,18 @@ public class Network_Analyzer {
                 console.nextLine(); // consume end of line
 
                 switch (choice) {
-                    case 1:
-                        handleRemoveConnection(console, graph);
-                        break;
-                    case 2:
-                        handleDeleteNode(console, graph);
-                        break;
-                    case 3:
-                        handleCountConnections(console, graph);
-                        break;
-                    case 4:
-                        handleConnectionGroups(console, graph);
-                        break;
-                    case 5:
-                        handleClosenessCentrality(console, graph);
-                        break;
-                    case 6:
-                        handleFindConnectors(graph);
-                        break;
-                    case 7:
+                    case 1 -> handleRemoveConnection(console, graph);
+                    case 2 -> handleDeleteNode(console, graph);
+                    case 3 -> handleCountConnections(console, graph);
+                    case 4 -> handleConnectionGroups(console, graph);
+                    case 5 -> handleClosenessCentrality(console, graph);
+                    case 6 -> handleFindConnectors(graph);
+                    case 7 -> handleVisualization();
+                    case 8 -> {
                         exit = true;
                         System.out.println("Exiting from the program.");
-                        break;
-                    default:
-                        System.out.println("Invalid option. Please try again.");
-                        break;
+                    }
+                    default -> System.out.println("Invalid option. Please try again.");
                 }
             }
         }
@@ -91,7 +78,8 @@ public class Network_Analyzer {
         System.out.println("4. Connection Groups");
         System.out.println("5. Closeness centrality");
         System.out.println("6. Find Connectors");
-        System.out.println("7. Exit");
+        System.out.println("7. Visualize Graph");
+        System.out.println("8. Exit");
     }
 
     // Handles option 1: removing a connection between two nodes
@@ -253,6 +241,45 @@ public class Network_Analyzer {
             System.out.println(v.node.nodeName + " from " + v.node.unit);
         }
     }
+
+    // Executes the external python script to generate an interactive graph
+    // then attempts to open the resulting html file in the default browser
+    private static void handleVisualization() {
+    System.out.println("Generating visualization...");
+
+    try {
+        System.out.println("Java working directory: " + new File(".").getAbsolutePath());
+
+        Process process = new ProcessBuilder(
+            "python3",
+            "visualizer_script.py"
+        ).redirectErrorStream(true).start();
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        }
+
+        int exitCode = process.waitFor();
+        System.out.println("Python exit code: " + exitCode);
+
+        File htmlFile = new File("infrastructure_graph.html");
+        System.out.println("Looking for: " + htmlFile.getAbsolutePath());
+
+        if (htmlFile.exists()) {
+            java.awt.Desktop.getDesktop().browse(htmlFile.toURI());
+            System.out.println("Graph opened successfully in your browser.");
+        } else {
+            System.out.println("The visualization file was not found.");
+        }
+
+    } catch (Exception e) {
+        System.out.println("Visualization failed:");
+        e.printStackTrace();
+    }
+}
 }
 
 // Simple data class that stores node information
