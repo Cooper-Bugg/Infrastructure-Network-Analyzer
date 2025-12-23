@@ -10,10 +10,6 @@
 # Log files
 *.log
 
-# Media and screenshots
-screenshots/
-media/
-
 # Python cache
 __pycache__/
 *.pyc
