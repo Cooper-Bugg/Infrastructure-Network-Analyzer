@@ -27,8 +27,8 @@ A console application that builds an undirected, unweighted network graph from a
 - Compile:
 
 ```bash
-cd /workspaces/Student-Network-Analyzer
-javac StudentNetworkAnalyzer.java
+cd /workspaces/NetworkAnalyzer
+javac NetworkAnalyzer.java
 ```
 
 - Run:
