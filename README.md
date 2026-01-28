@@ -8,13 +8,9 @@ A console application that builds an undirected, unweighted network graph from a
 
 	![Initial Load and Menu](media/Initial.png)
 
-2. **Prompt 7: Visualize Graph Option:**
+2. **Graph Ready State:**
 
-	![Prompt 7: Visualize Graph Option](media/Prompt_7.png)
-
-3. **Interactive Network Visualization:**
-
-	![Interactive Network Visualization](media/graph-showcase.gif)
+	![Graph Ready State](media/GraphReady.png)
 
 ## Files
 - [Network_Analyzer.java](Network_Analyzer.java): Main program and graph implementation.
