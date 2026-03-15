@@ -12,6 +12,43 @@ A console application that builds an undirected, unweighted network graph from a
 
 	![Graph Ready State](media/GraphReady.png)
 
+# Infrastructure Network Analyzer
+
+Infrastructure Network Analyzer is a graph-based Java project that loads a tab-separated dataset and analyzes relationships between connected nodes. The current version supports network construction, connection counting, group-based exploration, closeness centrality, and connector node detection, making it a strong foundation for graph analytics and systems-style problem solving. :contentReference[oaicite:1]{index=1}
+
+## Current Features
+
+- Builds an undirected, unweighted graph from TSV input
+- Counts and displays node connections
+- Groups nodes by shared attributes
+- Computes closeness centrality
+- Detects connector nodes and articulation points
+- Includes a Python visualization helper script alongside the Java analyzer files :contentReference[oaicite:2]{index=2}
+
+## Tech Stack
+
+- Java
+- Python for visualization support
+- TSV input pipeline :contentReference[oaicite:3]{index=3}
+
+## Future Plans
+
+This project is a candidate for a future C++ rewrite focused on performance, memory control, and lower-level graph system design. The goal would be to evolve it from a class-style Java analyzer into a more advanced systems-oriented graph toolkit.
+
+Planned future directions:
+- Rebuild the core graph engine in C++
+- Replace basic structures with custom adjacency-list and traversal implementations
+- Add weighted graphs and shortest path algorithms such as Dijkstra
+- Add graph statistics dashboards and richer visual output
+- Support larger datasets and benchmark runtime and memory usage
+- Add export formats for reports and graph snapshots
+- Build an interactive CLI or lightweight GUI for exploration
+- Compare Java and C++ versions for speed, scalability, and design tradeoffs
+
+## Why This Project Matters
+
+This project is useful for demonstrating graph fundamentals, algorithmic thinking, and data structure design. As it grows, it can also become a strong portfolio piece for C++, systems, infrastructure, or backend-focused roles.
+
 ## Files
 - [Network_Analyzer.java](Network_Analyzer.java): Main program and graph implementation.
 - [input.txt](input.txt): Example input data file (TSV).
